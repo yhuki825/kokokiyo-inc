@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>株式会社ココキヨ｜まちに、火を灯す。</title>
+<meta name="description" content="株式会社ココキヨは、大分・上野丘を拠点に、カレーハウスCoCo壱番屋FC店舗、もんじゃ焼き・うなぎ専門店、キッチンカーを運営する飲食企業です。三つの火で、まちの食卓を灯し続けます。">
+
+<!-- ============================================================
+     株式会社ココキヨ｜ブランドサイト
+     ブランドコンセプト：「まちに、火を灯す。」
+     単一ファイル構成（HTML / CSS / JS 全てインライン）
+     Cloudflare Pages へそのままアップロードで公開可能
+     ------------------------------------------------------------
+     ▼ 公開前に必ずご確認ください（要確認 / TODO）
+     1. 「CoCo壱番屋」「カレーハウスCoCo壱番屋」は株式会社壱番屋の
+        登録商標です。FC加盟店としての店名表記・ロゴ・写真の使用は
+        必ずFC本部の規定・許諾範囲をご確認のうえ調整してください。
+        本サイトではロゴを使用せず、テキスト表記のみとしています。
+     2. 住所は「870-0834 大分県上野丘西9番24号」でお預かりしましたが、
+        市区名（大分市）が含まれていない可能性があります。
+        正式表記をご確認のうえ修正してください。
+     3. 飲食店営業許可番号／食品衛生責任者／防火管理者、
+        キッチンカーの移動営業許可（保健所ごとに必要）などの
+        許認可情報は未確認のため空欄にしています。
+     4. 設立年・資本金・従業員数・店舗一覧・営業時間は仮置きです。
+     5. 代表者メッセージは弊方作成の草案です。
+        必ず代表者ご本人の言葉に差し替えてください。
+     6. 画像はすべてフリー素材（Unsplash）の仮画像です。
+        自社店舗・料理の写真に差し替えることを強く推奨します。
+     7. 本サイトにはお問い合わせフォーム／連絡先エリアはありません
+        （ご要望により非設置）。
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Barlow+Condensed:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. トークン
+   火の温度をそのまま配色にしています（灰 → 熾火 → 焔 → 白熱）
+   ============================================================ */
+:root{
+  --sumi:      #16110E;   /* 炭  ベース */
+  --sumi-2:    #1E1714;   /* 炭（面） */
+  --sumi-3:    #2B211C;   /* 炭（罫） */
+  --hai:       #B9AC9F;   /* 灰  補助テキスト */
+  --hai-light: #EDE6DA;   /* 灰白 反転セクション */
+  --okibi:     #DB4F1E;   /* 熾火 主アクセント */
+  --hono:      #EFA033;   /* 焔  副アクセント */
+  --hakunetsu: #FFF1D2;   /* 白熱 最明部 */
+  --moegi:     #6D8A6B;   /* 萌葱 うなぎ・もんじゃ系の差し色 */
+
+  --font-min: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+  --font-go:  "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  --font-mono:"IBM Plex Mono", monospace;
+  --font-num: "Barlow Condensed", "Shippori Mincho B1", sans-serif;
+
+  --pad: clamp(20px, 5vw, 72px);
+  --maxw: 1240px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--sumi);color:var(--hai-light);
+  font-family:var(--font-go);font-weight:400;line-height:1.9;
+  letter-spacing:.04em;overflow-x:hidden;
+  font-feature-settings:"palt" 1;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p{margin:0}
+
+:focus-visible{outline:2px solid var(--hono);outline-offset:4px;border-radius:2px}
+
+::selection{background:var(--okibi);color:var(--hakunetsu)}
+
+/* ============================================================
+   2. 共通パーツ
+   ============================================================ */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+.eyebrow{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;
+  color:var(--okibi);text-transform:uppercase;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--okibi);flex:none}
+
+.sec-title{
+  font-family:var(--font-min);font-weight:600;
+  font-size:clamp(28px,4.4vw,46px);line-height:1.5;letter-spacing:.08em;
+  margin-top:22px;
+}
+.sec-lead{
+  margin-top:24px;max-width:60ch;color:var(--hai);
+  font-size:clamp(14px,1.45vw,15.5px);line-height:2.15;
+}
+
+section{position:relative}
+.pad-y{padding-block:clamp(88px,13vw,168px)}
+
+/* 反転（灰白）セクション */
+.invert{background:var(--hai-light);color:var(--sumi)}
+.invert .sec-lead{color:#5B5049}
+.invert .eyebrow{color:#A8420F}
+.invert .eyebrow::before{background:#A8420F}
+
+/* スクロール表示 */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}
+.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+
+/* 要確認バッジ */
+.check{
+  display:inline-block;margin-left:8px;padding:2px 8px;border-radius:2px;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;
+  background:rgba(219,79,30,.14);color:var(--okibi);
+  border:1px solid rgba(219,79,30,.4);vertical-align:2px;white-space:nowrap;
+}
+.invert .check{background:rgba(168,66,15,.1);color:#A8420F;border-color:rgba(168,66,15,.35)}
+
+/* ============================================================
+   3. ヘッダー
+   ============================================================ */
+.hd{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);
+  transition:background .5s var(--ease),backdrop-filter .5s var(--ease),padding .5s var(--ease);
+}
+.hd.stuck{
+  background:rgba(22,17,14,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--sumi-3);padding-block:12px;
+}
+.logo{display:flex;align-items:baseline;gap:10px}
+.logo-mark{
+  font-family:var(--font-min);font-weight:800;font-size:20px;letter-spacing:.22em;
+  color:var(--hai-light);
+}
+.logo-mark em{font-style:normal;color:var(--okibi)}
+.logo-sub{
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.2em;color:var(--hai);
+  display:none;
+}
+@media(min-width:900px){.logo-sub{display:block}}
+
+.nav{display:none;gap:34px;align-items:center}
+@media(min-width:980px){.nav{display:flex}}
+.nav a{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;color:var(--hai);
+  position:relative;padding-block:6px;transition:color .35s var(--ease);
+}
+.nav a span{font-family:var(--font-go);font-size:12.5px;letter-spacing:.1em;margin-right:7px;color:var(--hai-light)}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--okibi);
+  transition:width .4s var(--ease);
+}
+.nav a:hover::after{width:100%}
+.nav a:hover{color:var(--hakunetsu)}
+
+.burger{
+  display:grid;place-content:center;gap:6px;width:44px;height:44px;
+  background:none;border:1px solid var(--sumi-3);border-radius:50%;cursor:pointer;
+  transition:border-color .3s var(--ease);
+}
+@media(min-width:980px){.burger{display:none}}
+.burger:hover{border-color:var(--okibi)}
+.burger i{display:block;width:16px;height:1px;background:var(--hai-light);transition:transform .4s var(--ease),opacity .3s}
+.burger.open i:nth-child(1){transform:translateY(3.5px) rotate(42deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){transform:translateY(-3.5px) rotate(-42deg)}
+
+.drawer{
+  position:fixed;inset:0;z-index:99;background:var(--sumi);
+  display:grid;place-content:center;gap:6px;text-align:center;
+  opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s;
+}
+.drawer.open{opacity:1;visibility:visible}
+.drawer a{
+  font-family:var(--font-min);font-size:24px;letter-spacing:.16em;padding:14px 30px;display:block;
+}
+.drawer a small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--okibi);margin-top:4px}
+
+/* ============================================================
+   4. ヒーロー：熾火のキャンバス＋縦書き
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+#embers{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 90% at 78% 88%, rgba(219,79,30,.30), transparent 58%),
+    radial-gradient(90% 70% at 20% 10%, rgba(239,160,51,.10), transparent 60%),
+    var(--sumi);
+}
+.hero-photo{
+  position:absolute;inset:0;z-index:0;object-fit:cover;width:100%;height:100%;
+  opacity:.30;filter:grayscale(.35) contrast(1.15) brightness(.72);
+  transform:scale(1.06);
+}
+.hero-veil{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,rgba(22,17,14,.72) 0%,rgba(22,17,14,.18) 42%,rgba(22,17,14,.94) 100%);
+}
+.hero-inner{position:relative;z-index:3;width:100%;padding-bottom:clamp(56px,9vw,104px)}
+
+.hero-copy{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+
+.hero-h1{
+  font-family:var(--font-min);font-weight:800;color:var(--hakunetsu);
+  font-size:clamp(38px,8.5vw,72px);line-height:1.7;letter-spacing:.14em;
+  text-shadow:0 0 46px rgba(219,79,30,.30);
+}
+.hero-h1 .ho{color:var(--hono)}
+@media(min-width:900px){
+  .hero-h1{
+    writing-mode:vertical-rl;text-orientation:upright;
+    height:min(56vh,460px);font-size:clamp(40px,4.6vw,60px);letter-spacing:.2em;
+  }
+}
+.hero-side{max-width:34ch}
+.hero-side p{font-size:13.5px;line-height:2.3;color:var(--hai)}
+.hero-tag{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;color:var(--okibi);
+  margin-bottom:18px;
+}
+.hero-meta{
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--sumi-3);
+  display:flex;gap:26px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#6F6459;
+}
+
+.scroll-cue{
+  position:absolute;left:var(--pad);bottom:26px;z-index:4;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.24em;color:#6F6459;
+  display:flex;align-items:center;gap:12px;
+}
+.scroll-cue .bar{position:relative;display:block;width:46px;height:1px;background:var(--sumi-3);overflow:hidden}
+.scroll-cue .bar::after{
+  content:"";position:absolute;inset:0;background:var(--okibi);
+  animation:sweep 2.6s var(--ease) infinite;
+}
+@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+/* ============================================================
+   5. 社名の由来
+   ============================================================ */
+.origin-grid{display:grid;gap:clamp(40px,6vw,86px);grid-template-columns:1fr}
+@media(min-width:940px){.origin-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+
+.kanji-split{
+  display:flex;align-items:center;gap:clamp(10px,2.4vw,26px);
+  padding:clamp(28px,4vw,48px) 0;flex-wrap:wrap;
+}
+.kanji-cell{text-align:center}
+.kanji-cell b{
+  display:block;font-family:var(--font-min);font-weight:800;
+  font-size:clamp(38px,7vw,68px);letter-spacing:.08em;color:var(--hakunetsu);line-height:1.2;
+}
+.kanji-cell small{
+  display:block;margin-top:12px;font-family:var(--font-mono);font-size:10px;
+  letter-spacing:.14em;color:var(--hai);line-height:1.9;
+}
+.kanji-op{
+  font-family:var(--font-num);font-weight:300;font-size:clamp(26px,4vw,40px);
+  color:var(--okibi);opacity:.75;
+}
+
+.origin-note{
+  margin-top:30px;padding:22px 26px;border-left:2px solid var(--okibi);
+  background:rgba(219,79,30,.05);font-size:13px;line-height:2.1;color:var(--hai);
+}
+
+.origin-photo{position:relative}
+.origin-photo img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.2) contrast(1.05) brightness(.85);
+}
+.origin-photo figcaption{
+  position:absolute;left:-1px;bottom:-1px;padding:12px 18px;background:var(--sumi);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--hai);
+}
+
+/* ============================================================
+   6. 三つの火（事業）
+   ============================================================ */
+.fires{display:grid;gap:1px;background:var(--sumi-3);margin-top:clamp(48px,7vw,84px)}
+@media(min-width:900px){.fires{grid-template-columns:repeat(3,1fr)}}
+
+.fire{
+  background:var(--sumi);padding:clamp(28px,3.4vw,42px);
+  position:relative;overflow:hidden;transition:background .6s var(--ease);
+}
+.fire::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,var(--okibi),var(--hono));
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease);
+}
+.fire:hover::after{transform:scaleX(1)}
+.fire:hover{background:var(--sumi-2)}
+.fire:hover .fire-img img{transform:scale(1.06);filter:grayscale(0) brightness(.95)}
+
+.fire-idx{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--okibi);
+}
+.fire-img{overflow:hidden;margin-top:20px;aspect-ratio:16/11}
+.fire-img img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.4) brightness(.78);transition:transform 1.1s var(--ease),filter .8s var(--ease);
+}
+.fire h3{
+  font-family:var(--font-min);font-weight:600;font-size:clamp(20px,2.3vw,25px);
+  letter-spacing:.1em;margin-top:24px;color:var(--hakunetsu);line-height:1.6;
+}
+.fire .kana{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;color:#6F6459;margin-top:8px;
+}
+.fire p{margin-top:16px;font-size:13px;line-height:2.1;color:var(--hai)}
+.fire ul{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px}
+.fire li{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--hai);
+  border:1px solid var(--sumi-3);padding:4px 10px;border-radius:99px;
+}
+
+/* ============================================================
+   7. 火度計（シグネチャー）
+   ============================================================ */
+.heat{background:var(--sumi-2);border-block:1px solid var(--sumi-3)}
+.heat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.heat-unit{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:#6F6459;text-align:right}
+
+.gauge{margin-top:clamp(46px,6vw,74px);display:grid;gap:0}
+.gauge-row{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  padding:clamp(24px,3vw,34px) 0;border-top:1px solid var(--sumi-3);
+}
+.gauge-row:last-child{border-bottom:1px solid var(--sumi-3)}
+@media(min-width:860px){
+  .gauge-row{grid-template-columns:190px 1fr 150px;align-items:center;gap:30px}
+}
+.gauge-label b{
+  display:block;font-family:var(--font-min);font-weight:600;font-size:17px;letter-spacing:.1em;
+  color:var(--hakunetsu);
+}
+.gauge-label small{
+  display:block;margin-top:6px;font-family:var(--font-mono);font-size:10px;
+  letter-spacing:.14em;color:#6F6459;
+}
+.gauge-track{position:relative;height:26px;background:rgba(255,255,255,.035);overflow:hidden}
+.gauge-track::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0 1px,transparent 1px 10%);
+}
+.gauge-fill{
+  position:absolute;inset:0 auto 0 0;width:0;
+  background:linear-gradient(90deg,#4A3A31 0%,var(--okibi) 55%,var(--hono) 82%,var(--hakunetsu) 100%);
+  transition:width 1.9s var(--ease);
+}
+.gauge-fill::after{
+  content:"";position:absolute;right:0;top:0;bottom:0;width:34px;
+  background:linear-gradient(90deg,transparent,rgba(255,241,210,.85));
+  animation:pulse 2.6s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+.gauge-val{
+  font-family:var(--font-num);font-weight:500;font-size:clamp(30px,4.6vw,46px);
+  color:var(--hakunetsu);line-height:1;letter-spacing:.02em;
+}
+.gauge-val i{font-style:normal;font-size:15px;color:var(--hono);margin-left:5px;letter-spacing:.08em}
+.gauge-note{font-size:12.5px;line-height:2;color:var(--hai);grid-column:1/-1;max-width:70ch}
+@media(min-width:860px){.gauge-note{grid-column:2/-1;margin-top:-4px}}
+
+.heat-foot{
+  margin-top:clamp(40px,5vw,60px);font-family:var(--font-min);
+  font-size:clamp(17px,2.4vw,24px);letter-spacing:.1em;line-height:2;color:var(--hakunetsu);
+}
+
+/* ============================================================
+   8. 一日（店舗運営業務）
+   ============================================================ */
+.day-layout{display:grid;gap:clamp(40px,6vw,74px);grid-template-columns:1fr}
+@media(min-width:1000px){.day-layout{grid-template-columns:.82fr 1.18fr}}
+
+.rail-wrap{position:relative;padding-left:34px}
+.rail{
+  position:absolute;left:9px;top:8px;bottom:8px;width:1px;background:rgba(22,17,14,.16);
+}
+.rail-prog{
+  position:absolute;left:0;top:0;width:100%;height:0;
+  background:linear-gradient(180deg,var(--hono),#A8420F);
+  transition:height .18s linear;
+}
+.rail-dot{
+  position:absolute;left:-4px;width:9px;height:9px;border-radius:50%;
+  background:var(--hai-light);border:1px solid rgba(22,17,14,.3);transition:all .5s var(--ease);
+}
+.rail-dot.hot{background:#A8420F;border-color:#A8420F;box-shadow:0 0 0 5px rgba(168,66,15,.14)}
+
+.day-item{padding-block:clamp(20px,2.4vw,28px);border-bottom:1px solid rgba(22,17,14,.1)}
+.day-item:first-child{padding-top:0}
+.day-time{
+  font-family:var(--font-num);font-weight:500;font-size:26px;letter-spacing:.04em;color:#A8420F;
+  line-height:1;
+}
+.day-item h4{
+  font-family:var(--font-min);font-weight:600;font-size:17px;letter-spacing:.08em;
+  margin-top:12px;color:var(--sumi);
+}
+.day-item p{margin-top:9px;font-size:12.8px;line-height:2.05;color:#5B5049}
+
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:rgba(22,17,14,.12)}
+.task{
+  background:var(--hai-light);padding:20px 18px;
+  transition:background .4s var(--ease);
+}
+.task:hover{background:#E3DACB}
+.task b{
+  display:block;font-family:var(--font-min);font-weight:600;font-size:14.5px;
+  letter-spacing:.08em;color:var(--sumi);
+}
+.task small{
+  display:block;margin-top:7px;font-family:var(--font-mono);font-size:9.5px;
+  letter-spacing:.1em;color:#7C7168;line-height:1.8;
+}
+.task-caption{margin-top:26px;font-size:12.5px;line-height:2.1;color:#5B5049}
+
+/* ============================================================
+   9. 持ち帰る火（テイクアウト・デリバリー）
+   ============================================================ */
+.togo{position:relative;overflow:hidden}
+.togo-bg{position:absolute;inset:0;z-index:0}
+.togo-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.45) brightness(.4) contrast(1.1)}
+.togo-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(22,17,14,.96) 8%,rgba(22,17,14,.55) 65%,rgba(22,17,14,.85));
+}
+.togo-inner{position:relative;z-index:1;max-width:62ch}
+.togo-list{margin-top:38px;display:grid;gap:1px;background:var(--sumi-3);max-width:640px}
+.togo-list div{background:rgba(22,17,14,.72);padding:20px 24px;display:flex;gap:18px;align-items:baseline}
+.togo-list dt{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:var(--hono);flex:none;width:72px;
+}
+.togo-list dd{margin:0;font-size:13px;line-height:2;color:var(--hai-light)}
+
+/* ============================================================
+   10. 火を継ぐ（人と教育）
+   ============================================================ */
+.pass-grid{display:grid;gap:clamp(36px,5vw,64px);grid-template-columns:1fr}
+@media(min-width:900px){.pass-grid{grid-template-columns:repeat(3,1fr)}}
+.pass{border-top:1px solid var(--sumi-3);padding-top:26px}
+.pass .n{font-family:var(--font-num);font-weight:300;font-size:44px;color:var(--okibi);line-height:1}
+.pass h4{font-family:var(--font-min);font-weight:600;font-size:18px;letter-spacing:.1em;margin-top:14px;color:var(--hakunetsu)}
+.pass p{margin-top:14px;font-size:13px;line-height:2.1;color:var(--hai)}
+
+/* ============================================================
+   11. 代表メッセージ（縦書き）
+   ============================================================ */
+.msg{background:var(--sumi-2);border-block:1px solid var(--sumi-3)}
+.msg-inner{display:grid;gap:clamp(34px,5vw,60px);grid-template-columns:1fr}
+@media(min-width:960px){
+  .msg-inner{grid-template-columns:auto 1fr;justify-content:start;align-items:start}
+}
+.msg-vert{
+  font-family:var(--font-min);font-weight:600;color:var(--hakunetsu);
+  font-size:clamp(21px,3vw,27px);letter-spacing:.2em;line-height:2.05;
+}
+@media(min-width:960px){
+  .msg-vert{writing-mode:vertical-rl;height:440px;padding-left:20px}
+}
+.msg-body p{font-size:13.5px;line-height:2.35;color:var(--hai);margin-bottom:22px;max-width:56ch}
+.msg-sign{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--sumi-3);
+  display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+}
+.msg-sign span{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:#6F6459}
+.msg-sign b{font-family:var(--font-min);font-weight:600;font-size:22px;letter-spacing:.18em;color:var(--hakunetsu)}
+.draft-note{
+  margin-top:26px;padding:16px 20px;border:1px dashed rgba(219,79,30,.45);
+  font-family:var(--font-mono);font-size:10.5px;line-height:1.9;color:var(--okibi);letter-spacing:.06em;
+}
+
+/* ============================================================
+   12. 会社概要
+   ============================================================ */
+.info{display:grid;gap:0;margin-top:clamp(44px,6vw,66px)}
+.info-row{
+  display:grid;grid-template-columns:1fr;gap:6px;
+  padding:20px 0;border-bottom:1px solid rgba(22,17,14,.12);
+}
+@media(min-width:720px){
+  .info-row{grid-template-columns:200px 1fr;gap:30px;padding:22px 0}
+}
+.info-row:first-child{border-top:1px solid rgba(22,17,14,.12)}
+.info-row dt{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;color:#7C7168;padding-top:4px;
+}
+.info-row dd{margin:0;font-size:14px;line-height:2.05;color:var(--sumi)}
+.info-row dd .sub{display:block;font-size:12px;color:#7C7168;margin-top:6px;line-height:1.9}
+.ph{color:#9A9089;font-style:italic}
+
+/* ============================================================
+   13. フッター
+   ============================================================ */
+.ft{background:var(--sumi);padding:clamp(56px,7vw,86px) 0 34px;position:relative;overflow:hidden}
+.ft::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--okibi),transparent);
+}
+.ft-top{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;align-items:flex-start}
+.ft-logo{font-family:var(--font-min);font-weight:800;font-size:26px;letter-spacing:.24em;color:var(--hakunetsu)}
+.ft-logo em{font-style:normal;color:var(--okibi)}
+.ft-tag{margin-top:14px;font-family:var(--font-min);font-size:14px;letter-spacing:.16em;color:var(--hai)}
+.ft-addr{font-size:12.5px;line-height:2.1;color:var(--hai);max-width:34ch}
+.ft-nav{display:flex;gap:22px;flex-wrap:wrap;margin-top:44px}
+.ft-nav a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;color:#6F6459;transition:color .3s}
+.ft-nav a:hover{color:var(--hono)}
+.ft-btm{
+  margin-top:34px;padding-top:22px;border-top:1px solid var(--sumi-3);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;color:#5A5049;
+}
+
+/* ============================================================
+   14. モーション配慮
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .rv{opacity:1;transform:none}
+  #embers{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<header class="hd" id="hd">
+  <a href="#top" class="logo" aria-label="株式会社ココキヨ トップへ">
+    <span class="logo-mark">ココ<em>キヨ</em></span>
+    <span class="logo-sub">COCOKIYO INC. / OITA</span>
+  </a>
+  <nav class="nav" aria-label="メインナビゲーション">
+    <a href="#origin"><span>由来</span>ORIGIN</a>
+    <a href="#business"><span>三つの火</span>BUSINESS</a>
+    <a href="#heat"><span>火度</span>HEAT</a>
+    <a href="#day"><span>一日</span>A DAY</a>
+    <a href="#message"><span>代表挨拶</span>MESSAGE</a>
+    <a href="#company"><span>会社概要</span>COMPANY</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+    <i></i><i></i><i></i>
+  </button>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="#origin">由来<small>ORIGIN</small></a>
+  <a href="#business">三つの火<small>BUSINESS</small></a>
+  <a href="#heat">火度<small>HEAT</small></a>
+  <a href="#day">一日<small>A DAY</small></a>
+  <a href="#message">代表挨拶<small>MESSAGE</small></a>
+  <a href="#company">会社概要<small>COMPANY</small></a>
+</div>
+
+<!-- ========== ヒーロー ========== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <img class="hero-photo" alt=""
+       src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1900&q=80"
+       onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-hero/1900/1100';">
+  <canvas id="embers" aria-hidden="true"></canvas>
+  <div class="hero-veil"></div>
+
+  <div class="hero-inner">
+    <div class="wrap hero-copy">
+      <h1 class="hero-h1">まちに、<br class="br-sp"><span class="ho">火</span>を灯す。</h1>
+      <div class="hero-side">
+        <p class="hero-tag">COCOKIYO INC. — THREE FIRES, ONE KITCHEN</p>
+        <p>カレーの寸胴。もんじゃの鉄板。うなぎの備長炭。<br>
+        業態は違っても、私たちの仕事はいつも「火加減」でした。<br>
+        大分・上野丘から、三つの火をまちの食卓へ運んでいます。</p>
+        <div class="hero-meta">
+          <span>OITA, JAPAN</span>
+          <span>CURRY / MONJA / UNAGI</span>
+          <span>MOBILE KITCHEN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="bar"></span>SCROLL</div>
+</section>
+
+<!-- ========== 社名の由来 ========== -->
+<section class="pad-y" id="origin">
+  <div class="wrap origin-grid">
+    <div>
+      <p class="eyebrow rv">ORIGIN — 社名の由来</p>
+      <h2 class="sec-title rv" data-d="1">二つの名前が、<br>ひとつの厨房になる。</h2>
+
+      <div class="kanji-split rv" data-d="2">
+        <div class="kanji-cell">
+          <b>ココ</b>
+          <small>カレーハウス<br>CoCo壱番屋</small>
+        </div>
+        <div class="kanji-op">＋</div>
+        <div class="kanji-cell">
+          <b>キヨ</b>
+          <small>代表<br>清田 力</small>
+        </div>
+        <div class="kanji-op">＝</div>
+        <div class="kanji-cell">
+          <b>ココキヨ</b>
+          <small>のれんと、<br>ひとりの名前</small>
+        </div>
+      </div>
+
+      <p class="sec-lead rv" data-d="2">
+        「ココキヨ」という社名には、全国のお客様が知るのれんの名と、この会社を始めたひとりの名前が、そのまま並んでいます。
+        大きな看板を借りる責任と、自分の名前を出す覚悟。そのふたつを一緒に背負うという意思表示です。<br><br>
+        私たちは業態を増やしてきましたが、やっていることは変わりません。仕込みをして、火を入れて、席に運ぶ。
+        その一日を、今日も同じ温度で繰り返すことだけを考えています。
+      </p>
+
+      <p class="origin-note rv" data-d="3">
+        「CoCo壱番屋」「カレーハウスCoCo壱番屋」は株式会社壱番屋の登録商標です。当社はフランチャイズ加盟店として店舗を運営しています。
+      </p>
+    </div>
+
+    <figure class="origin-photo rv" data-d="1" style="margin:0">
+      <img alt="仕込みの手元" loading="lazy"
+           src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1100&q=80"
+           onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-origin/1100/1375';">
+      <figcaption>／ 仕込み — 開店3時間前</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ========== 三つの火（事業） ========== -->
+<section class="pad-y" id="business" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow rv">BUSINESS — 三つの火</p>
+    <h2 class="sec-title rv" data-d="1">寸胴と、鉄板と、炭。</h2>
+    <p class="sec-lead rv" data-d="2">
+      当社が営むのは、性格のまったく違う三つの飲食業です。共通しているのは、火の入れ方でしか味が決まらないということ。
+      だから私たちは、業態ではなく「火の種類」で仕事を数えています。
+    </p>
+  </div>
+
+  <div class="wrap">
+    <div class="fires">
+      <article class="fire rv">
+        <p class="fire-idx">火 01 ／ 寸胴の火</p>
+        <div class="fire-img">
+          <img alt="カレー" loading="lazy"
+               src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-curry/1000/700';">
+        </div>
+        <h3>カレーハウス<br>CoCo壱番屋 FC店舗</h3>
+        <p class="kana">FRANCHISE / CURRY HOUSE</p>
+        <p>フランチャイズ加盟店として、全国共通の品質基準を守りながら店舗を運営しています。
+        辛さもトッピングも、お客様一人ひとりで違う。その「違い」を毎回きちんと再現することが、私たちの仕事です。</p>
+        <ul><li>FC加盟店運営</li><li>本部基準の品質管理</li><li>テイクアウト対応</li></ul>
+      </article>
+
+      <article class="fire rv" data-d="1">
+        <p class="fire-idx">火 02 ／ 鉄板と炭の火</p>
+        <div class="fire-img">
+          <img alt="鉄板と炭火" loading="lazy"
+               src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-monja/1000/700';">
+        </div>
+        <h3>もんじゃ焼き・<br>うなぎ専門店</h3>
+        <p class="kana">MONJAYAKI / UNAGI</p>
+        <p>お客様が自分で焼く鉄板と、職人が焼き上げる備長炭。手を動かす楽しさと、任せて待つ贅沢。
+        正反対の時間の流れを、ひとつの店で用意しています。</p>
+        <ul><li>もんじゃ焼き</li><li>うなぎ蒲焼</li><li>宴会・会食</li></ul>
+      </article>
+
+      <article class="fire rv" data-d="2">
+        <p class="fire-idx">火 03 ／ 運ぶ火</p>
+        <div class="fire-img">
+          <img alt="キッチンカー" loading="lazy"
+               src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-truck/1000/700';">
+        </div>
+        <h3>キッチンカー<br>（移動販売）</h3>
+        <p class="kana">MOBILE KITCHEN</p>
+        <p>店舗で待つのではなく、厨房ごと出かけていく。イベント、オフィス街、地域の催し。
+        お客様が集まる場所に、そのまま火を持っていける機動力が強みです。</p>
+        <ul><li>イベント出店</li><li>地域催事</li><li>企業・団体対応</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 火度計（シグネチャー） ========== -->
+<section class="heat pad-y" id="heat">
+  <div class="wrap">
+    <div class="heat-head">
+      <div>
+        <p class="eyebrow rv">HEAT SCALE — 火度計</p>
+        <h2 class="sec-title rv" data-d="1">同じ会社が、<br>三つの温度を扱っている。</h2>
+      </div>
+      <p class="heat-unit rv" data-d="2">UNIT: ℃<br>SCALE: LOGARITHMIC</p>
+    </div>
+
+    <div class="gauge" id="gauge">
+      <div class="gauge-row">
+        <div class="gauge-label"><b>寸胴・煮込み</b><small>CURRY / SIMMER</small></div>
+        <div class="gauge-track"><span class="gauge-fill" data-w="66"></span></div>
+        <div class="gauge-val"><span class="num" data-to="98">0</span><i>℃</i></div>
+        <p class="gauge-note">沸騰させない温度で、ただ待つ。カレーの仕事の大半は、火を強くしないための我慢でできています。</p>
+      </div>
+
+      <div class="gauge-row">
+        <div class="gauge-label"><b>鉄板</b><small>MONJAYAKI / GRIDDLE</small></div>
+        <div class="gauge-track"><span class="gauge-fill" data-w="78"></span></div>
+        <div class="gauge-val"><span class="num" data-to="220">0</span><i>℃</i></div>
+        <p class="gauge-note">お客様の手元にある火。焼き方はお任せしても、鉄板の温度と土手の作り方だけは、こちらが責任を持ちます。</p>
+      </div>
+
+      <div class="gauge-row">
+        <div class="gauge-label"><b>備長炭</b><small>UNAGI / BINCHOTAN</small></div>
+        <div class="gauge-track"><span class="gauge-fill" data-w="97"></span></div>
+        <div class="gauge-val"><span class="num" data-to="800">0</span><i>℃</i></div>
+        <p class="gauge-note">遠火の強火。一瞬で決まる焼き色を、毎日同じところに合わせにいく。ここだけは職人の目に頼っています。</p>
+      </div>
+    </div>
+
+    <p class="heat-foot rv">
+      98℃、220℃、800℃。<br>
+      数字は違っても、見ているのは「今日のお客様に、ちょうどいいか」だけです。
+    </p>
+    <p style="margin-top:18px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:#6F6459">
+      ※ 温度は調理帯の一般的な目安として記載しています。実測値ではありません。
+    </p>
+  </div>
+</section>
+
+<!-- ========== 一日（店舗運営業務） ========== -->
+<section class="invert pad-y" id="day">
+  <div class="wrap">
+    <p class="eyebrow rv">A DAY — 火を絶やさない一日</p>
+    <h2 class="sec-title rv" data-d="1">看板を出す前から、<br>閉めたあとまで。</h2>
+    <p class="sec-lead rv" data-d="2">
+      飲食店の仕事は、お客様が見ている時間よりも、見ていない時間のほうが長い。
+      当社が担っているのは、その全部です。
+    </p>
+
+    <div class="day-layout" style="margin-top:clamp(48px,6vw,80px)">
+      <div class="rail-wrap" id="railWrap">
+        <div class="rail"><span class="rail-prog" id="railProg"></span></div>
+
+        <div class="day-item">
+          <p class="day-time">08:00</p>
+          <h4>仕込み</h4>
+          <p>食材の検品、下処理、仕込み。前日の売上と天気予報を見ながら、今日の仕込み量を決めます。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">10:00</p>
+          <h4>開店準備・清掃</h4>
+          <p>客席、厨房、トイレ、店頭。開店前の清掃は毎日同じ順番で。衛生管理は記録まで含めて一つの作業です。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">11:00</p>
+          <h4>ランチ営業｜接客・調理・レジ</h4>
+          <p>一番忙しい二時間。オーダー、調理、提供、会計、テイクアウトの受け渡しが同時に走ります。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">14:30</p>
+          <h4>在庫管理・発注</h4>
+          <p>使った分を数え、翌日・翌週の発注をかける。欠品も過剰在庫も、どちらも味に響きます。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">16:00</p>
+          <h4>スタッフ教育・シフト調整</h4>
+          <p>新人への手順共有、翌月のシフト作成。人が育たないと、店は開けられません。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">17:30</p>
+          <h4>ディナー営業｜接客・調理</h4>
+          <p>ゆっくり食事をされるお客様が中心の時間帯。会話のテンポも、料理の出し方も切り替えます。</p>
+        </div>
+        <div class="day-item">
+          <p class="day-time">22:00</p>
+          <h4>締め作業・売上管理</h4>
+          <p>レジ締め、日報、売上と原価の確認、翌日の準備。数字を見て、明日の仕込み量に戻ってきます。</p>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="task-grid">
+          <div class="task"><b>接客</b><small>CUSTOMER SERVICE</small></div>
+          <div class="task"><b>調理</b><small>COOKING</small></div>
+          <div class="task"><b>仕込み</b><small>PREP</small></div>
+          <div class="task"><b>レジ</b><small>CASHIER</small></div>
+          <div class="task"><b>清掃</b><small>CLEANING</small></div>
+          <div class="task"><b>在庫管理</b><small>INVENTORY</small></div>
+          <div class="task"><b>発注</b><small>ORDERING</small></div>
+          <div class="task"><b>売上管理</b><small>SALES CONTROL</small></div>
+          <div class="task"><b>スタッフ教育</b><small>TRAINING</small></div>
+          <div class="task"><b>シフト管理</b><small>SHIFT PLANNING</small></div>
+        </div>
+        <p class="task-caption">
+          十の業務を分けて考えることはしません。仕込みが甘ければ提供が遅れ、教育が足りなければ清掃が抜け、
+          発注を間違えれば売上が落ちる。全部が一本につながっているから、店舗運営を丸ごと担うことにこだわっています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 持ち帰る火 ========== -->
+<section class="togo pad-y">
+  <div class="togo-bg">
+    <img alt="" loading="lazy"
+         src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=1800&q=80"
+         onerror="this.onerror=null;this.src='https://picsum.photos/seed/cocokiyo-togo/1800/1000';">
+  </div>
+  <div class="wrap togo-inner">
+    <p class="eyebrow rv">TAKEOUT &amp; DELIVERY</p>
+    <h2 class="sec-title rv" data-d="1">火を持ち帰る。</h2>
+    <p class="sec-lead rv" data-d="2">
+      店で食べる時間が取れない日にも、同じ味に届いてほしい。
+      容器の選び方、詰める順番、渡すまでの時間。持ち帰りには、店内とは別の設計が要ります。
+    </p>
+
+    <dl class="togo-list rv" data-d="2">
+      <div><dt>TAKEOUT</dt><dd>店頭でのお持ち帰りに対応しています。</dd></div>
+      <div><dt>DELIVERY</dt><dd>デリバリーに対応しています。<span class="check">要確認：対応エリア・利用サービス</span></dd></div>
+      <div><dt>MOBILE</dt><dd>キッチンカーによる出張販売を行っています。<span class="check">要確認：出店スケジュール</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ========== 火を継ぐ ========== -->
+<section class="pad-y">
+  <div class="wrap">
+    <p class="eyebrow rv">OUR PEOPLE — 火を継ぐ</p>
+    <h2 class="sec-title rv" data-d="1">火は、人にしか渡せない。</h2>
+    <p class="sec-lead rv" data-d="2">
+      レシピは紙に書けます。けれど「今日の鉄板がいい状態かどうか」は、隣で見て、やってみて、直してもらうことでしか伝わりません。
+      当社の教育は、その繰り返しでできています。
+    </p>
+
+    <div class="pass-grid" style="margin-top:clamp(46px,6vw,74px)">
+      <div class="pass rv">
+        <p class="n">01</p>
+        <h4>手順は、隣で渡す</h4>
+        <p>マニュアルを読ませて終わりにはしません。仕込みも接客も、まず横に立って一緒にやる。できるようになってから任せます。</p>
+      </div>
+      <div class="pass rv" data-d="1">
+        <p class="n">02</p>
+        <h4>持ち場を、越えて覚える</h4>
+        <p>ホールもキッチンもレジも、ひと通り触れるようにします。相手の忙しさが分かる人ほど、店の流れが早くなります。</p>
+      </div>
+      <div class="pass rv" data-d="2">
+        <p class="n">03</p>
+        <h4>シフトは、生活に合わせる</h4>
+        <p>学業、家庭、体調。事情はそれぞれ違います。無理のないシフトを組むことも、味を守るための管理業務だと考えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 代表メッセージ ========== -->
+<section class="msg pad-y" id="message">
+  <div class="wrap">
+    <p class="eyebrow rv">MESSAGE — 代表挨拶</p>
+    <div class="msg-inner" style="margin-top:clamp(34px,4vw,52px)">
+      <p class="msg-vert rv">火を絶やさないことが、<br>地域に居続けるということ。</p>
+      <div class="msg-body rv" data-d="1">
+        <p>飲食店の一日は、驚くほど地味な作業の積み重ねです。野菜を洗い、鍋を火にかけ、床を拭き、数字を数える。
+        その中に劇的な瞬間はほとんどありません。</p>
+        <p>それでも続けているのは、「今日も開いていてよかった」と言ってくださる方が、この地域にいるからです。
+        カレーを食べに来る学生も、もんじゃを囲む家族も、うなぎを楽しみに来られる年配のお客様も、
+        キッチンカーの前で並んでくださる方も、私たちにとっては同じ一人のお客様です。</p>
+        <p>業態を増やしてきたのは、手を広げたかったからではありません。
+        地域の食のかたちが変わっていく中で、来ていただける入口を増やしたかったからです。
+        これからも、まちの日常のそばで火を灯し続けます。</p>
+
+        <div class="msg-sign">
+          <span>株式会社ココキヨ　代表取締役</span>
+          <b>清田 力</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 会社概要 ========== -->
+<section class="invert pad-y" id="company">
+  <div class="wrap">
+    <p class="eyebrow rv">COMPANY — 会社概要</p>
+    <h2 class="sec-title rv" data-d="1">会社概要</h2>
+
+    <dl class="info rv" data-d="2">
+      <div class="info-row"><dt>商号</dt><dd>株式会社ココキヨ</dd></div>
+      <div class="info-row"><dt>代表者</dt><dd>代表取締役　清田 力</dd></div>
+      <div class="info-row">
+        <dt>所在地</dt>
+        <dd>〒870-0834　大分県大分市上野丘西9番24号
+        </dd>
+      </div>
+      <div class="info-row">
+        <dt>事業内容</dt>
+        <dd>飲食店の運営<br>
+          ・カレーハウスCoCo壱番屋 フランチャイズ加盟店舗の運営<br>
+          ・もんじゃ焼き／うなぎ専門店の運営<br>
+          ・キッチンカー（移動販売）の運営<br>
+          ・テイクアウト／デリバリーサービス
+        </dd>
+      </div>
+
+      <!-- 
+      <div class="info-row"><dt>設立</dt><dd><span class="ph">未確定</span><span class="check">要確認</span></dd></div>
+      <div class="info-row"><dt>資本金</dt><dd><span class="ph">未確定</span><span class="check">要確認</span></dd></div>
+      <div class="info-row"><dt>従業員数</dt><dd><span class="ph">未確定</span><span class="check">要確認</span></dd></div>
+      <div class="info-row">
+        <dt>許認可</dt>
+        <dd><span class="ph">未記載</span><span class="check">要確認</span>
+          <span class="sub">飲食店営業許可、食品衛生責任者、防火管理者、キッチンカーの営業許可（保健所ごとに取得が必要）などの番号・登録先をご確認のうえ記載してください。</span>
+        </dd>
+      </div>
+      -->
+
+      <div class="info-row">
+        <dt>商標について</dt>
+        <dd>「CoCo壱番屋」「カレーハウスCoCo壱番屋」は株式会社壱番屋の登録商標です。
+          <span class="sub">当社はフランチャイズ加盟店として店舗を運営しています。</span>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ========== フッター ========== -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <p class="ft-logo">ココ<em>キヨ</em></p>
+        <p class="ft-tag">まちに、火を灯す。</p>
+      </div>
+      <p class="ft-addr">
+        株式会社ココキヨ<br>
+        〒870-0834<br>大分県大分市上野丘西9番24号
+      </p>
+    </div>
+
+    <nav class="ft-nav" aria-label="フッターナビゲーション">
+      <a href="#origin">ORIGIN</a>
+      <a href="#business">BUSINESS</a>
+      <a href="#heat">HEAT</a>
+      <a href="#day">A DAY</a>
+      <a href="#message">MESSAGE</a>
+      <a href="#company">COMPANY</a>
+      <a href="#top">TOP</a>
+    </nav>
+
+    <div class="ft-btm">
+      <span>© <span id="yr">2026</span> COCOKIYO INC. ALL RIGHTS RESERVED.</span>
+      <span>「CoCo壱番屋」は株式会社壱番屋の登録商標です。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 年号 ---------- */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- ヘッダー ---------- */
+  var hd = document.getElementById('hd');
+  var onScroll = function(){
+    hd.classList.toggle('stuck', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- ハンバーガー ---------- */
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  var toggle = function(force){
+    var open = force !== undefined ? force : !drawer.classList.contains('open');
+    drawer.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    drawer.setAttribute('aria-hidden', String(!open));
+    burger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', function(){ toggle(); });
+  drawer.addEventListener('click', function(e){
+    if(e.target.closest('a')) toggle(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && drawer.classList.contains('open')) toggle(false);
+  });
+
+  /* ---------- スクロールリビール ---------- */
+  var rvs = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el){ io.observe(el); });
+  }else{
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- 火度計：バー伸長＋数値カウント ---------- */
+  var gauge = document.getElementById('gauge');
+  var runGauge = function(){
+    gauge.querySelectorAll('.gauge-fill').forEach(function(el, i){
+      setTimeout(function(){ el.style.width = el.dataset.w + '%'; }, i * 180);
+    });
+    gauge.querySelectorAll('.num').forEach(function(el, i){
+      var to = parseInt(el.dataset.to, 10);
+      if(reduce){ el.textContent = to; return; }
+      var dur = 1700, start = null, delay = i * 180;
+      setTimeout(function(){
+        var step = function(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(to * eased);
+          if(p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }, delay);
+    });
+  };
+  if('IntersectionObserver' in window){
+    var gio = new IntersectionObserver(function(en){
+      if(en[0].isIntersecting){ runGauge(); gio.disconnect(); }
+    }, {threshold:.3});
+    gio.observe(gauge);
+  }else{ runGauge(); }
+
+  /* ---------- 一日：進行レール ---------- */
+  var railWrap = document.getElementById('railWrap');
+  var railProg = document.getElementById('railProg');
+  var items = railWrap.querySelectorAll('.day-item');
+
+  /* 各項目の位置にドットを配置 */
+  items.forEach(function(it){
+    var dot = document.createElement('span');
+    dot.className = 'rail-dot';
+    railWrap.appendChild(dot);
+    it._dot = dot;
+  });
+  var placeDots = function(){
+    var wt = railWrap.getBoundingClientRect().top;
+    items.forEach(function(it){
+      var r = it.getBoundingClientRect();
+      it._dot.style.top = (r.top - wt + 14) + 'px';
+    });
+  };
+  var updateRail = function(){
+    var r = railWrap.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var p = (vh * 0.62 - r.top) / r.height;
+    p = Math.max(0, Math.min(1, p));
+    railProg.style.height = (p * 100) + '%';
+    var line = r.top + r.height * p;
+    items.forEach(function(it){
+      var ir = it.getBoundingClientRect();
+      it._dot.classList.toggle('hot', ir.top + 14 <= line);
+    });
+  };
+  window.addEventListener('scroll', updateRail, {passive:true});
+  window.addEventListener('resize', function(){ placeDots(); updateRail(); });
+  window.addEventListener('load', function(){ placeDots(); updateRail(); });
+  placeDots(); updateRail();
+
+  /* ---------- ヒーロー：熾火のキャンバス ---------- */
+  var cv = document.getElementById('embers');
+  if(cv && !reduce){
+    var ctx = cv.getContext('2d');
+    var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var parts = [];
+
+    var resize = function(){
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      build();
+    };
+    var build = function(){
+      var n = Math.round(Math.min(90, Math.max(30, W / 16)));
+      parts = [];
+      for(var i = 0; i < n; i++) parts.push(spawn(true));
+    };
+    var spawn = function(init){
+      return {
+        x: Math.random() * W,
+        y: init ? Math.random() * H : H + Math.random() * 80,
+        r: Math.random() * 1.9 + 0.5,
+        vy: -(Math.random() * 0.42 + 0.14),
+        vx: (Math.random() - 0.5) * 0.24,
+        a: Math.random() * 0.65 + 0.15,
+        ph: Math.random() * Math.PI * 2,
+        hue: Math.random() < 0.28 ? 42 : 20
+      };
+    };
+    var t = 0, raf;
+    var loop = function(){
+      t += 0.012;
+      ctx.clearRect(0, 0, W, H);
+      for(var i = 0; i < parts.length; i++){
+        var p = parts[i];
+        p.y += p.vy;
+        p.x += p.vx + Math.sin(t * 1.4 + p.ph) * 0.32;
+        var life = p.y / H;
+        var alpha = p.a * Math.max(0, Math.min(1, life)) * (0.6 + 0.4 * Math.sin(t * 2.4 + p.ph));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + p.hue + ',92%,' + (p.hue === 42 ? 68 : 56) + '%,' + Math.max(0, alpha) + ')';
+        ctx.shadowBlur = 9;
+        ctx.shadowColor = 'hsla(' + p.hue + ',95%,58%,.65)';
+        ctx.fill();
+        if(p.y < -20 || p.x < -40 || p.x > W + 40) parts[i] = spawn(false);
+      }
+      ctx.shadowBlur = 0;
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener('resize', resize);
+    resize(); loop();
+
+    /* ヒーローが画面外なら停止 */
+    if('IntersectionObserver' in window){
+      var hio = new IntersectionObserver(function(en){
+        if(en[0].isIntersecting){ if(!raf) loop(); }
+        else { cancelAnimationFrame(raf); raf = null; }
+      }, {threshold:0});
+      hio.observe(document.getElementById('top'));
+    }
+  }
+})();
+</script>
+</body>
+</html>
